@@ -770,7 +770,7 @@ git reset .
 <p><strong>把暂存库中的文件提交</strong></p>
 
 <pre><code>git commit -m "...."
-git commit -a  **跳过暂存区直接把工作区的文件提交**
+git commit -a  跳过暂存区直接把工作区的文件提交
 </code></pre>
 </li>
 <li>
@@ -798,10 +798,11 @@ git log --pretty=oneline
 <li>
 <p>*<em>版本回退 *</em></p>
 
-<pre><code>git reset --hard HEAD^  **回退到上一个版本**
-**(HEAD/HEAD^/HEAD^^/HEAD^^^/HEAD~100)**
-git reset --hard fsaf2132134
+<pre><code>git reset --hard HEAD^  回退到上一个版本
 </code></pre>
+
+<p><strong>(HEAD/HEAD^/HEAD^^/HEAD^^^/HEAD~100)</strong>
+    git reset --hard fsaf2132134</p>
 </li>
 <li>
 <p><strong>查看命令历史</strong></p>
@@ -814,6 +815,12 @@ git reset --hard fsaf2132134
 
 <pre><code>git diff HEAD -- readme.txt
 </code></pre>
+</li>
+<li>
+<p><strong>忽略特殊文件</strong></p>
+
+<p><strong>.gitignore</strong>
+<strong>.gitignore文件本身要放在版本库中，并且可以对其做版本管理</strong></p>
 </li>
 </ol>
 
@@ -838,19 +845,46 @@ git reset --hard fsaf2132134
 <pre><code>git push -u origin master
 </code></pre>
 
-<p><strong>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</strong>
-    git push origin master
-<strong>origin是远程库的代称，master是要推送的本地库的分支名称</strong></p>
+<p><strong>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</strong></p>
+
+<pre><code>git push origin master
+</code></pre>
+
+<p><strong>origin是远程库的代称，master是要推送的本地库的分支名称</strong></p>
 </li>
 <li>
 <p><strong>从远程克隆一个库</strong></p>
 
-<pre><code>git clonegit@github.com:michaelliao/gitskills.git
+<p><strong>使用ssh协议传输</strong></p>
+
+<pre><code>git clone git@github.com:michaelliao/gitskills.git
 </code></pre>
 
-<p><strong>使用ssh协议传输</strong>
-    <a href="https://github.com/michaelliao/gitskills.git">https://github.com/michaelliao/gitskills.git</a>
-<strong>使用https协议</strong></p>
+<p><strong>使用https协议</strong>       </p>
+
+<pre><code>git clone https://github.com/michaelliao/gitskills.git
+</code></pre>
+</li>
+<li>
+<p><strong>查看远程库的信息</strong></p>
+
+<pre><code>git remote
+git remote -v
+</code></pre>
+</li>
+<li>
+<p><em>远程抓取分支</em></p>
+
+<pre><code>git checkout -b dev origin/dev
+</code></pre>
+
+<p><strong>创建远程origin的dev分支到本地dev</strong></p>
+</li>
+<li>
+<p><strong>制定本地分支与远程分支的链接</strong></p>
+
+<pre><code>git branch --set-upstream dev origin/dev
+</code></pre>
 </li>
 </ol>
 
@@ -894,7 +928,42 @@ git reset --hard fsaf2132134
 <pre><code>git branch -d &lt;name&gt;
 </code></pre>
 </li>
+<li>
+<p><strong>stash</strong></p>
+
+<pre><code>git stash
+</code></pre>
+
+<p><strong>压栈</strong>
+    git stash list
+<strong>查看stash内容</strong>
+    git stash apply
+<strong>把stash恢复到工作区，且不删除stash中的内容</strong>
+    git stash drop
+<strong>删除stash中的内容</strong>
+    git stash pop
+<strong>弹出栈</strong></p>
+</li>
+<li>
+<p><strong>标签</strong></p>
+
+<pre><code>git tag &lt;tagname&gt;
+git tag
+git show &lt;tagname&gt;
+git push origin &lt;tagname&gt;
+git push origin --tags
+git tag -d &lt;tagname&gt;
+git push origin :refs/tages/&lt;tagnames&gt;
+</code></pre>
+
+<p><strong>删除本地标签和远程标签</strong></p>
+</li>
 </ol>
+
+<h1>
+<a id="user-content-创建git服务器" class="anchor" href="#%E5%88%9B%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>创建Git服务器</h1>
+
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000"><strong>搭建Git服务器教程</strong></a></p>
 
 <h2>
 <a id="user-content-基本概念" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本概念</h2>

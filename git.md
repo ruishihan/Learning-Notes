@@ -30,7 +30,7 @@ git 学习笔记
 6. **把暂存库中的文件提交**
 
 		git commit -m "...."
-		git commit -a  **跳过暂存区直接把工作区的文件提交**
+		git commit -a  跳过暂存区直接把工作区的文件提交
 
 7. **查看工作区、暂存区状态**
 
@@ -49,8 +49,8 @@ git 学习笔记
 
 10. **版本回退 **
 
-		git reset --hard HEAD^	**回退到上一个版本**
-		**(HEAD/HEAD^/HEAD^^/HEAD^^^/HEAD~100)**
+		git reset --hard HEAD^	回退到上一个版本
+	**(HEAD/HEAD^/HEAD^^/HEAD^^^/HEAD~100)**
 		git reset --hard fsaf2132134
 
 11. **查看命令历史**
@@ -60,6 +60,11 @@ git 学习笔记
 12. **查看工作区和版本库里面最新版本的区别**
 
 		git diff HEAD -- readme.txt
+
+13. **忽略特殊文件**
+
+	**.gitignore**
+	**.gitignore文件本身要放在版本库中，并且可以对其做版本管理**
 
 #远程协作
 1. **github创建新的版本库**
@@ -77,15 +82,35 @@ git 学习笔记
 
 		git push -u origin master
 **由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。**
+
 		git push origin master
 **origin是远程库的代称，master是要推送的本地库的分支名称**
 
 1. **从远程克隆一个库**
 
-		git clonegit@github.com:michaelliao/gitskills.git
-**使用ssh协议传输**
-		https://github.com/michaelliao/gitskills.git
-**使用https协议**
+	**使用ssh协议传输**
+
+		git clone git@github.com:michaelliao/gitskills.git
+
+	**使用https协议**		
+
+		git clone https://github.com/michaelliao/gitskills.git
+
+
+1. **查看远程库的信息**
+
+		git remote
+		git remote -v
+
+1. *远程抓取分支*
+
+		git checkout -b dev origin/dev
+	**创建远程origin的dev分支到本地dev**
+
+1. **制定本地分支与远程分支的链接**
+		
+		git branch --set-upstream dev origin/dev
+
 
 #分支管理
 1. **创建分支**
@@ -111,6 +136,33 @@ git 学习笔记
 1. **删除分支**
 
 		git branch -d <name>
+
+1. **stash**
+		
+		git stash
+	**压栈**
+		git stash list
+	**查看stash内容**
+		git stash apply
+	**把stash恢复到工作区，且不删除stash中的内容**
+		git stash drop
+	**删除stash中的内容**
+		git stash pop
+	**弹出栈**
+1. **标签**
+	
+		git tag <tagname>
+		git tag
+		git show <tagname>
+		git push origin <tagname>
+		git push origin --tags
+		git tag -d <tagname>
+		git push origin :refs/tages/<tagnames>
+	**删除本地标签和远程标签**
+
+#创建Git服务器
+
+[**搭建Git服务器教程**](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000)
 
 基本概念
 ------------
