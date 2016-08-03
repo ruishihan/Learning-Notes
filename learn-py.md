@@ -103,6 +103,7 @@ python
     >sys模块包含了与Python解释器和它的环境有关的函数
 
     >sys模块中的argv变量通过使用点号指明——sys.argv——
+
 		#!/usr/bin/python
 		#Filename using_sys.py
 	
@@ -243,6 +244,7 @@ python
 
 **注意：list1=list2	与	list1=list2[:]的区别**	
 **前者只是浅拷贝，只是创建一个指针，并没有真正复制；后者才是深拷贝，时真正的复制内存**
+
 
 
 7. **输入输出**
